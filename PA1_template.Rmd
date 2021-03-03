@@ -7,19 +7,92 @@ output:
 
 
 ## Loading and preprocessing the data
+```{r dingo}
+
+
+
+
+
+```
+
+text
+
 
 
 
 ## What is mean total number of steps taken per day?
+```{r dingo2}
+
+
+
+
+
+```
+
+text
+
+
 
 
 
 ## What is the average daily activity pattern?
 
+```{r dingo3}
+
+
+
+
+
+```
+
+text
+
+
 
 
 ## Imputing missing values
 
+```{r dingo4}
+
+
+
+
+
+```
+
+text
+
+
+
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
+```{r dingo5}
+
+
+
+
+
+```
+
+text
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -8,7 +8,8 @@ output:
 
 ## Loading and preprocessing the data
 ```{r dingo}
-
+unzip("activity.zip")
+data <- read.csv("activity.csv")
 
 
 
@@ -22,14 +23,17 @@ text
 
 ## What is mean total number of steps taken per day?
 ```{r dingo2}
+dailyData <- aggregate(steps~date, data, sum, na.rm=TRUE)
+hist(dailyData$steps)
 
-
+a <- mean(dailyData$steps, na.rm=TRUE)
+b <- median(dailyData$steps, na.rm=TRUE)
 
 
 
 ```
 
-text
+Mean is `r as.integer(a)`, median is `r b`.
 
 
 
@@ -39,8 +43,14 @@ text
 
 ```{r dingo3}
 
+intervalAgg <- aggregate(steps~interval, data, sum, na.rm=TRUE)
+
+plot(intervalAgg$interval,  intervalAgg$steps, type="l")
 
 
+intervalue<- subset(intervalAgg, intervalAgg$steps == max(intervalAgg$steps, na.rm=TRUE))$interval
+
+intervalue
 
 
 ```
@@ -53,14 +63,47 @@ text
 ## Imputing missing values
 
 ```{r dingo4}
+navals <- sum(is.na(data$steps))
+navals
 
+newData <- data
+
+interVals <- unique(newData$interval)
+
+
+#sorry for this garbage, recovering java programmer
+
+for(i in 1:length(interVals)){
+        #print(interVals[i])
+        subByInt <- subset(newData, newData$interval == interVals[i])
+        #print(subByInt)
+        mean <- mean(subByInt$steps, na.rm=TRUE)
+        #if(dim(subByInt)[1]=="0"){next} 
+        if(is.nan(mean)){mean<-0} #all na values inthis interval
+        print(nrow(subByInt))
+        for(j in 1:nrow(subByInt)){
+               if(is.na(newData$steps[j])){
+                   newData$steps[j] <- mean #replaces NA with interval mean
+                
+               } 
+        subByInt <- NA        
+        }
+} #end of cleaning NA steps
+
+newDailyData <- aggregate(steps~date, newData, sum, na.rm=TRUE)
+hist(newDailyData$steps)
+
+c <- mean(dailyData$steps, na.rm=TRUE)
+d <- median(dailyData$steps, na.rm=TRUE)
+
+print(c(c,d))
 
 
 
 
 ```
 
-text
+Seems like no impact?
 
 
 
@@ -81,18 +124,35 @@ text
 
 
 
+yeet
+yeet
+yeet
+yeet
+
+yeet
+yeet
+yeet
+yeet
+yeet
+yeet
+yeet
+yeet
+
+yeet
+yeet
+yeet
+yeet
 
 
+yeet
 
 
+yeet
+
+yeet
 
 
-
-
-
-
-
-
-
-
-
+yeet
+yeet
+yeet
+yeet
